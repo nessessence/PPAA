@@ -14,5 +14,7 @@
 /run_ppp_18_0.sh
 /script.py
 /train_dreambooth_lora.py
+/generate_goku_extra_prompts.py
+/generate_original_prompt_list.py
 
 /logs
