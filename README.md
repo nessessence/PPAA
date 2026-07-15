@@ -20,7 +20,6 @@ python ppaa/train_ppaa_erase.py \
   --generic_concept "person" \
   --device cuda:0 \
   --token_selection C \
-  --pull_token_selection "" \
   --m_push 0.20 \
   --steps 1000 \
   --precision bf16 \
@@ -72,9 +71,3 @@ Citation information will be added when the paper metadata is public.
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
-## Contact
-
-Please follow the project page for updates:
-
-https://push-pull-concept-eraser.github.io/
