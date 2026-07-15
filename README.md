@@ -19,16 +19,20 @@ This trains one configuration with `m_push=0.20`, `m_pull=0.40`, and token selec
 `C` while preserving all semantic tokens:
 
 ```bash
-python script.py \
+python ppaa/train_ppaa_erase.py \
+  --erase_concept "Barack Obama" \
+  --generic_concept "person" \
   --device cuda:0 \
-  --case-index 0 \
-  --m-push-values 0.20 \
-  --m-pull 0.40 \
-  --token-selections C \
-  --pull-token-selections "" \
-  --semantic-preserve-tokens all \
-  --pull-weights 1.0 \
-  --skip-generate
+  --token_selection C \
+  --pull_token_selection "" \
+  --semantic_preserve_token all \
+  --m_push 0.20 \
+  --m_pull 0.40 \
+  --pull_weight 1.0 \
+  --steps 1000 \
+  --precision bf16 \
+  --save_dir data_root/logs/ppaa \
+  --report_to none
 ```
 
 The checkpoint is written to:
@@ -39,29 +43,24 @@ data_root/logs/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/st
 
 ### Inference (Generation)
 
-After training, generate 50 images for both prompts using the completed checkpoint:
+After training, use the completed weight file directly with the standalone inference script:
 
 ```bash
-python script.py \
-  --device cuda:0 \
-  --case-index 0 \
-  --m-push-values 0.20 \
-  --m-pull 0.40 \
-  --token-selections C \
-  --pull-token-selections "" \
-  --semantic-preserve-tokens all \
-  --pull-weights 1.0 \
-  --n-generation 50 \
-  --cfg-scale 7.50 \
-  --num-inference-steps 50 \
-  --skip-train
+python inference_ppaa.py \
+  --load_unet_weight_path data_root/logs/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/step1000.safetensors \
+  --instance_prompt "a photo of Barack Obama;a photo of Will Smith" \
+  --gen_image_path data_root/generated/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/step1000 \
+  --num_validation_images 50 \
+  --cfg_scale 7.50 \
+  --num_inference_steps 50 \
+  --device cuda:0
 ```
 
 Images are saved under:
 
 ```text
-data_root/generated/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/step1000/a photo of Barack Obama/7.50/0000.jpg
-data_root/generated/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/step1000/a photo of Will Smith/7.50/0000.jpg
+data_root/generated/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/step1000/a photo of Barack Obama/7.50/0000.png
+data_root/generated/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/step1000/a photo of Will Smith/7.50/0000.png
 ```
 
 ## Citation
