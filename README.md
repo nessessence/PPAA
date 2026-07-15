@@ -30,8 +30,8 @@ python ppaa/train_ppaa_erase.py \
 To reproduce the main quantitative result reported in the paper, push both the
 concept and EOS tokens with `--token_selection "CsE"`. As discussed in the appendix,
 pushing only concept tokens may produce better results for some concepts: use
-`--token_selection "Cs"` for multi-token concepts or `--token_selection "C"` for
-single-token concepts.
+`--token_selection "C"` for concepts represented by one to three tokens, or
+`--token_selection "Cs"` for longer or broader multi-token concepts.
 
 The checkpoint is written to:
 
