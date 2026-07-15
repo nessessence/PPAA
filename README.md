@@ -1,17 +1,13 @@
-# Push-Pull Attentional Anchoring for Diffusion Concept Erasure
+# Push-Pull Attentional Anchoring for Diffusion Concept Erasure (ECCV26)
 
-Official code repository for:
-
-**Push-Pull Attentional Anchoring for Diffusion Concept Erasure**
-
-ECCV 2026
+Official code repository for **Push-Pull Attentional Anchoring for Diffusion Concept Erasure (ECCV26)**.
 
 Project page: https://push-pull-concept-eraser.github.io/
 
-## Minimal Training and Generation Example
+## Training and Generation Example
 
-The built-in case `0` erases `Barack Obama` using the generic concept `person` and
-generates images for both `a photo of Barack Obama` and `a photo of Will Smith`.
+This example trains an eraser for `Barack Obama` using the generic concept `person`,
+then generates images for `a photo of Barack Obama` and `a photo of Will Smith`.
 
 ### Training
 
@@ -75,7 +71,7 @@ Citation information will be added when the paper metadata is public.
 
 ## License
 
-License information will be added with the public release.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 ## Contact
 
