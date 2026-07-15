@@ -8,36 +8,60 @@ ECCV 2026
 
 Project page: https://push-pull-concept-eraser.github.io/
 
-## Status
+## Minimal Training and Generation Example
 
-This repository is being initialized for the public code release. The implementation,
-checkpoints, and reproduction instructions will be added after the release is ready.
+The built-in case `0` erases `Barack Obama` using the generic concept `person` and
+generates images for both `a photo of Barack Obama` and `a photo of Will Smith`.
 
-For now, please see the project page for the abstract, qualitative results, and updates.
+### Training
 
-## Repository Relationship
+This trains one configuration with `m_push=0.20`, `m_pull=0.40`, and token selection
+`C` while preserving all semantic tokens:
 
-This code repository is separate from the project website repository:
+```bash
+python script.py \
+  --device cuda:0 \
+  --case-index 0 \
+  --m-push-values 0.20 \
+  --m-pull 0.40 \
+  --token-selections C \
+  --pull-token-selections "" \
+  --semantic-preserve-tokens all \
+  --pull-weights 1.0 \
+  --skip-generate
+```
 
-- Code repository: implementation, environment files, scripts, configs, and release notes.
-- Website repository: static GitHub Pages site, figures, thumbnails, and presentation assets.
-
-They should share only lightweight public-facing metadata, such as the project title,
-project-page URL, citation text, and release links. Keeping the repositories separate avoids
-mixing website assets with executable research code.
-
-## Planned Contents
+The checkpoint is written to:
 
 ```text
-.
-|-- README.md
-|-- environment.yml or requirements.txt
-|-- configs/
-|-- scripts/
-|-- src/
-|-- examples/
-|-- assets/
-`-- LICENSE
+data_root/logs/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/step1000.safetensors
+```
+
+### Inference (Generation)
+
+After training, generate 50 images for both prompts using the completed checkpoint:
+
+```bash
+python script.py \
+  --device cuda:0 \
+  --case-index 0 \
+  --m-push-values 0.20 \
+  --m-pull 0.40 \
+  --token-selections C \
+  --pull-token-selections "" \
+  --semantic-preserve-tokens all \
+  --pull-weights 1.0 \
+  --n-generation 50 \
+  --cfg-scale 7.50 \
+  --num-inference-steps 50 \
+  --skip-train
+```
+
+Images are saved under:
+
+```text
+data_root/generated/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/step1000/a photo of Barack Obama/7.50/0000.jpg
+data_root/generated/ppaa/barack-obama_to_person_push0.20_pull0.40_relative_C_seed0/step1000/a photo of Will Smith/7.50/0000.jpg
 ```
 
 ## Citation
