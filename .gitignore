@@ -1,0 +1,18 @@
+/data_root
+/data_root2
+/wandb
+
+# Local sweep launchers and generated experiment configuration files
+/launch_v18_tmux.sh
+/ppaa_cases_naked_person.json
+/ppaa_cases_new_list.json
+/ppaa_cases_ryan_gosling.json
+/run_18_0.sh
+/run_18_1.sh
+/run_18_2.sh
+/run_18_3.sh
+/run_ppp_18_0.sh
+/script.py
+/train_dreambooth_lora.py
+
+/logs
