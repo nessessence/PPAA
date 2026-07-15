@@ -32,6 +32,8 @@ concept and EOS tokens with `--token_selection "CsE"`. As discussed in the appen
 pushing only concept tokens may produce better results for some concepts: use
 `--token_selection "C"` for concepts represented by one to three tokens, or
 `--token_selection "Cs"` for longer or broader multi-token concepts.
+For the paper's plots, we evaluate all five push margins:
+`m_push=0.80, 0.60, 0.40, 0.20, 0.00`.
 
 The checkpoint is written to:
 
