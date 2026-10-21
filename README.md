@@ -69,10 +69,13 @@ Citation information will be added when the paper metadata is public.
 
 ```bibtex
 @inproceedings{chatthee2026pushpull,
-  title     = {Push-Pull Attentional Anchoring for Diffusion Concept Erasure},
+  title     = {Push--Pull Attentional Anchoring for Diffusion Concept Erasure},
   author    = {Chatthee, Nattanat and Sompong, Tagon and Chuangsuwanich, Ekapol and Suwajanakorn, Supasorn},
-  booktitle = {European Conference on Computer Vision (ECCV)},
-  year      = {2026}
+  booktitle = {European Conference on Computer Vision},
+  pages     = {134--150},
+  year      = {2026},
+  publisher = {Springer, Cham},
+  doi       = {10.1007/978-3-032-37321-2_8}
 }
 ```
 
