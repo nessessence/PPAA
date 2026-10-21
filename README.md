@@ -1,5 +1,7 @@
 # Push-Pull Attentional Anchoring for Diffusion Concept Erasure (ECCV26)
 
+![ECCV 2026 Spotlight!](https://img.shields.io/badge/ECCV_2026-Spotlight%21-F2B134?style=for-the-badge&labelColor=24292F)
+
 Official code repository for **Push-Pull Attentional Anchoring for Diffusion Concept Erasure (ECCV26)**.
 
 Project page: https://push-pull-concept-eraser.github.io/
